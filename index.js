@@ -20,16 +20,17 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json 
 app.use(bodyParser.json())
 
-var messages = [];
+var messages = '[ {"sender": "s", "receiver": "r", "message": "hello", lat: 0, lon: 0} ]';
 
 function addMessage(sender, receiver, message, lat, lon){
-	var m = 'a' //{sender, receiver, message, lat, lon}
-	messages.push(m)
+	var newMessages = messages.split(']');
+	newMessages += '{"sender":"' + sender + '", "receiver":"' + receiver + '", "message":"' + message + '", lat:' + lat + ', lon:' + lon + '}]';
+	messages = newMessages;
 }
 
 id = setInterval(function(){
 	var path = './messages.json'
-	fs.writeFile(path, JSON.stringify(messages), function(err) {
+	fs.writeFile(path, messages, function(err) {
 	    if(err) {
 	        return console.log(err);
 	    }
@@ -55,7 +56,7 @@ id = setInterval(function(){
 app.get('/', function(req, res){
 	console.log('get hit')
 	res.send('refid: ' + currentRefID)
-	res.send(json.stringify(messages))  //sending whole message from here instead of a reference for mobile app :)
+	res.send(messages)  //sending whole message from here instead of a reference for mobile app :)
 })
 
 app.post('/', function (req, res) {
