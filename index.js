@@ -41,7 +41,7 @@ id = setInterval(function(){
 			if (err) {
 				console.log(err);
 			} else {
-				jsonMessages[0]["sentiment"] = resp['aggregate']['score'];
+				jsonMessages[0]["sentiment"] = resp['body']['aggregate']['score'];
 				console.log(resp)
 			}
 		});
