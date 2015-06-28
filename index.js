@@ -20,15 +20,32 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json 
 app.use(bodyParser.json())
 
-var messages = '[ {"sender": "s", "receiver": "r", "message": "hello", "lat": 0, "lon": 0} ]';
+var messages = '[ {"sender": "s", "receiver": "r", "message": "hello", "lat": 0, "lon": 0, "sentiment": 0} ]';
 
-function addMessage(sender, receiver, message, lat, lon){
+function addMessage(sender, receiver, message, lat, lon, sentiment){
 	var newMessages = messages.split(']');
-	newMessages += '{"sender":"' + sender + '", "receiver":"' + receiver + '", "message":"' + message + '", "lat":' + lat + ', "lon":' + lon + '}]';
+	newMessages += '{"sender":"' + sender + '", "receiver":"' + receiver + '", "message":"' + message + '", "lat":' + lat + ', "lon":' + lon + ', "sentiment":' + 0 + '}]';
 	messages = newMessages;
 }
 
 id = setInterval(function(){
+
+	var jsonMessages = JSON.parse(messages);
+
+	for (var i = 0; i < jsonMessages.length; i++) {
+		var datatemp = {
+			apikey:  process.env.idolOnDemandApiKey,
+			text: jsonMessages[i]["message"]
+		}
+		needle.post('http://api.idolondemand.com/1/api/sync/storeobject/v1', data, function(err, resp, body) {
+			if (err) {
+				console.log(err);
+			} else {
+				jsonMessages[i]["sentiment"] = resp['aggregate']['score'];
+			}
+		});
+	}
+
 	var path = './messages.json'
 	fs.writeFile(path, messages, function(err) {
 	    if(err) {
@@ -41,6 +58,7 @@ id = setInterval(function(){
 		apikey:  process.env.idolOnDemandApiKey,
 		file: {'file':'messages.json','content_type':'multipart/form-data'}
 	}
+
 	needle.post('http://api.idolondemand.com/1/api/sync/storeobject/v1', data, { multipart: true, 'Content-Length': data.length }, function(err, resp, body) {
 		if (err) {
 			console.log(err);
