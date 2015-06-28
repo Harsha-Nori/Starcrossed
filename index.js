@@ -43,7 +43,7 @@ app.get('/', function(req,res){
 	res.send('refid: ' + currentRefID)
 })
 
-app.post('/' functin(req,res){
+app.post('/' function(req,res){
 	console.log('post hit')
 })
 
