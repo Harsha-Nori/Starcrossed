@@ -9,18 +9,13 @@ var iod = require('iod-node')
 var fs = require('fs');
 // client = new iod.IODClient('http://api.idolondemand.com', process.env.idolOnDemandApiKey)
 
-previousRefID = ''
 currentRefID = ''
-updateTimer = 1000
-messagesJSON = 	'{ "employees" : [' +
-					'{ "firstName":"John" , "lastName":"Doe" },' +
-					'{ "firstName":"Anna" , "lastName":"Smith" },' +
-					'{ "firstName":"Peter" , "lastName":"Jones" } ]}';
+updateTimer = 60000
+messagesJSON = 	"{ 'messages' : []}";
 
 
 
 id = setInterval(function(){
-	// console.log("this worked")
 	var path = './messages.json'
 	fs.writeFile(path, messagesJSON, function(err) {
 	    if(err) {
@@ -38,13 +33,18 @@ id = setInterval(function(){
 			console.log(err);
 		} else {
 			console.log(resp);
+			currentRefID = resp;
 		}
 	})
 }, updateTimer)
 
 app.get('/', function(req,res){
-	console.log('hit')
-	res.send('refid: ' + process.env.idolOnDemandApiKey)
+	console.log('get hit')
+	res.send('refid: ' + currentRefID)
+})
+
+app.post('/' functin(req,res){
+	console.log('post hit')
 })
 
 app.listen(process.env.PORT || 3000)
