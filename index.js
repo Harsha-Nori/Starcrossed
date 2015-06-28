@@ -43,7 +43,7 @@ id = setInterval(function(){
 				console.log(err);
 			} else {
 				jsonMessages[0]["sentiment"] = resp['body']['aggregate']['score'];
-				//console.log("HELLO LOOK AT ME: " + resp['body']['aggregate']['score']);
+				console.log("HELLO LOOK AT ME: " + resp['body']['aggregate']['score']);
 			}
 		});
 	}
