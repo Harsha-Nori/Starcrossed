@@ -7,15 +7,18 @@ var http = require('http').Server(app)
 var needle = require('needle')
 var iod = require('iod-node')
 var fs = require('fs')
-//var parser = require('body-parser')
-var parser = require('body/json')
+var bodyParser = require('body-parser')
 // client = new iod.IODClient('http://api.idolondemand.com', process.env.idolOnDemandApiKey)
 
 currentRefID = '-1'
 updateTimer = 60000
 // messagesJSON =  [{sender: 'global', message: 'Hello, World!', latitude: '', longitude: ''}];
-//app.use(express.json());
-app.use(parser());
+
+// parse application/x-www-form-urlencoded 
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json 
+app.use(bodyParser.json())
 
 var messages = [];
 
