@@ -33,8 +33,8 @@ id = setInterval(function(){
 			console.log(err);
 		} else {
 			//console.log(resp);
-			console.log("here is the response test: ")
-			console.log(resp['body']);
+			console.log("WE ARE IN THE ELSE: ")
+			console.log(resp['body']['reference']);
 			currentRefID = resp;
 		}
 	})
