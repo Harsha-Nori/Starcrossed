@@ -7,20 +7,21 @@ var http = require('http').Server(app)
 var needle = require('needle')
 var iod = require('iod-node')
 var fs = require('fs')
-var parser = require('body-parser')
+//var parser = require('body-parser')
+var parser = require('body/json')
 // client = new iod.IODClient('http://api.idolondemand.com', process.env.idolOnDemandApiKey)
 
 currentRefID = ''
 updateTimer = 60000
 // messagesJSON =  [{sender: 'global', message: 'Hello, World!', latitude: '', longitude: ''}];
-app.use(bodyParser.json());
-app.use(express.json());
+//app.use(express.json());
+app.use(parser());
 
 var messages = [];
 
 function addMessage(sender, receiver, message, lat, lon){
-	var m = {sender, receiver, message, lat, lon};
-	messages.push(m);
+	var m = 'a'//{sender, receiver, message, lat, lon}
+	messages.push(m)
 }
 
 id = setInterval(function(){
