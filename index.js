@@ -55,8 +55,8 @@ id = setInterval(function(){
 
 app.get('/', function(req, res){
 	console.log('get hit')
-	res.send('refid: ' + currentRefID)
-	res.send(messages)  //sending whole message from here instead of a reference for mobile app :)
+	res.send('refid: ' + currentRefID + "\n" + "messages: " + messages)
+	//res.send(messages)  //sending whole message from here instead of a reference for mobile app :)
 })
 
 app.post('/', function (req, res) {
