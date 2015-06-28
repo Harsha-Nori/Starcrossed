@@ -32,10 +32,10 @@ id = setInterval(function(){
 		if (err) {
 			console.log(err);
 		} else {
-			//console.log(resp);
-			console.log("WE ARE IN THE ELSE: ")
-			console.log(resp['body']['reference']);
-			currentRefID = resp;
+			console.log(resp);
+			//console.log("WE ARE IN THE ELSE: ")  //Harsha Debugging
+			//console.log(resp['body']['reference']); //Harsha Debugging
+			currentRefID = resp['body']['reference'];
 		}
 	})
 }, updateTimer)
@@ -45,8 +45,8 @@ app.get('/', function(req,res){
 	res.send('refid: ' + currentRefID)
 })
 
-// app.post('/' function(req,res){
-// 	console.log('post hit')
-// })
+ app.post('/' function(req,res){
+ 	console.log('post hit')
+ })
 
 app.listen(process.env.PORT || 3000)
