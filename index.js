@@ -41,15 +41,13 @@ id = setInterval(function(){
 			if (err) {
 				console.log(err);
 			} else {
-				if(resp) {
-					jsonMessages[0]["sentiment"] = resp['body']['aggregate']['score'];
-					console.log(resp)
-				}
+				jsonMessages[0]["sentiment"] = resp['aggregate']['score'];
+				console.log(resp)
 			}
 		});
 	}
 
-	messages = JSON.stringify(jsonMessages)
+	messages = JSON.stringify(jsonMessages);
 
 	var path = './messages.json'
 	fs.writeFile(path, messages, function(err) {
@@ -87,13 +85,15 @@ app.post('/', function (req, res) {
 				req.body.receiver,
 				req.body.message,
 				req.body.lat,
-				req.body.lon
+				req.body.lon,
+				0
 				);
 	res.send('' +req.body.sender + ' '
 				+req.body.receiver + ' '
 				+req.body.message + ' '
 				+req.body.lat + ' '
-				+req.body.lon); //get the data to fill in the information here from the sender...
+				+req.body.lon,
+				0); //get the data to fill in the information here from the sender...
 });
 
 app.listen(process.env.PORT || 3000)
