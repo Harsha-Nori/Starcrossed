@@ -33,12 +33,12 @@ id = setInterval(function(){
 	var jsonMessages = JSON.parse(messages);
 
 	for (var i = 0; i < jsonMessages.length; i++) {
-		// var datatemp = {
-		// 	apikey:  process.env.idolOnDemandApiKey,
-		// 	text: "Today is an awesome and super happy fun day!"
-		// 	//text: jsonMessages[i]["message"]
-		// }
-		needle.post('http://api.idolondemand.com/1/api/sync/storeobject/v1?text=today+was+an+awesome+day&apikey=4a0d6484-82ce-4f42-a5fc-d1f03c516edf', function(err, resp, body) {
+		var datatemp = {
+			apikey:  process.env.idolOnDemandApiKey,
+			text: "Today is an awesome and super happy fun day!"
+			//text: jsonMessages[i]["message"]
+		}
+		needle.post('http://api.idolondemand.com/1/api/sync/analyzesentiment/v1', datatemp, function(err, resp, body) {
 			if (err) {
 				console.log(err);
 			} else {
