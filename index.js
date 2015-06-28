@@ -10,6 +10,7 @@ var fs = require('fs')
 var bodyParser = require('body-parser')
 // client = new iod.IODClient('http://api.idolondemand.com', process.env.idolOnDemandApiKey)
 
+currentString = 'Updating...'
 currentRefID = '-1'
 updateTimer = 30000
 
@@ -48,7 +49,7 @@ id = setInterval(function(){
 	}
 
 	messages = JSON.stringify(jsonMessages);
-
+	currentString = "Updated Sentiment!"
 	var path = './messages.json'
 	fs.writeFile(path, messages, function(err) {
 	    if(err) {
@@ -76,7 +77,7 @@ id = setInterval(function(){
 
 app.get('/', function(req, res){
 	console.log('get hit')
-	res.send('refid: ' + currentRefID + "\n" + "messages: " + messages)
+	res.send(currentString + '    ' + "\n" + "messages: " + messages)
 	//res.send(messages)  //sending whole message from here instead of a reference for mobile app :)
 })
 
