@@ -40,13 +40,13 @@ id = setInterval(function(){
 	})
 }, updateTimer)
 
-app.get('/', function(req,res){
+app.get('/', function(req, res){
 	console.log('get hit')
 	res.send('refid: ' + currentRefID)
 })
 
- app.post('/' function(req,res){
- 	console.log('post hit')
- })
+app.post('/', function (req, res) {
+  res.send('POST request to homepage');
+});
 
 app.listen(process.env.PORT || 3000)
