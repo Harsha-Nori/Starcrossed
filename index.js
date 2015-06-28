@@ -20,11 +20,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json 
 app.use(bodyParser.json())
 
-var messages = '[ {"sender": "s", "receiver": "r", "message": "hello", lat: 0, lon: 0} ]';
+var messages = '[ {"sender": "s", "receiver": "r", "message": "hello", "lat": 0, "lon": 0} ]';
 
 function addMessage(sender, receiver, message, lat, lon){
 	var newMessages = messages.split(']');
-	newMessages += '{"sender":"' + sender + '", "receiver":"' + receiver + '", "message":"' + message + '", lat:' + lat + ', lon:' + lon + '}]';
+	newMessages += '{"sender":"' + sender + '", "receiver":"' + receiver + '", "message":"' + message + '", "lat":' + lat + ', "lon":' + lon + '}]';
 	messages = newMessages;
 }
 
