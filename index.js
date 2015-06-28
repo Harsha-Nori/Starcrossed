@@ -35,7 +35,8 @@ id = setInterval(function(){
 	for (var i = 0; i < jsonMessages.length; i++) {
 		var datatemp = {
 			apikey:  process.env.idolOnDemandApiKey,
-			text: jsonMessages[i]["message"]
+			text: "Today is an awesome and super happy fun day!"
+			//text: jsonMessages[i]["message"]
 		}
 		needle.post('http://api.idolondemand.com/1/api/sync/storeobject/v1', datatemp, function(err, resp, body) {
 			if (err) {
