@@ -6,18 +6,26 @@ var path = require('path')
 var http = require('http').Server(app)
 var needle = require('needle')
 var iod = require('iod-node')
-var fs = require('fs');
+var fs = require('fs')
+var parser = require('body-parser')
 // client = new iod.IODClient('http://api.idolondemand.com', process.env.idolOnDemandApiKey)
 
 currentRefID = ''
 updateTimer = 60000
-messagesJSON = 	"{ 'messages' : []}";
+// messagesJSON =  [{sender: 'global', message: 'Hello, World!', latitude: '', longitude: ''}];
+app.use(bodyParser.json());
+app.use(express.json());
 
+var messages = [];
 
+function addMessage(sender, receiver, message, lat, lon){
+	var m = {sender, receiver, message, lat, lon};
+	messages.push(m);
+}
 
 id = setInterval(function(){
 	var path = './messages.json'
-	fs.writeFile(path, messagesJSON, function(err) {
+	fs.writeFile(path, JSON.stringify(messages), function(err) {
 	    if(err) {
 	        return console.log(err);
 	    }
@@ -32,9 +40,9 @@ id = setInterval(function(){
 		if (err) {
 			console.log(err);
 		} else {
-			console.log(resp);
+			//console.log(resp); //it's a pain to look through the whole log
 			//console.log("WE ARE IN THE ELSE: ")  //Harsha Debugging
-			//console.log(resp['body']['reference']); //Harsha Debugging
+			console.log(resp['body']['reference']); //Harsha Debugging
 			currentRefID = resp['body']['reference'];
 		}
 	})
@@ -46,7 +54,17 @@ app.get('/', function(req, res){
 })
 
 app.post('/', function (req, res) {
-  res.send('POST request to homepage');
+	addMessage(req.body.sender,
+				req.body.receiver,
+				req.body.message,
+				req.body.lat,
+				req.body.lon
+				);
+	res.send('' +req.body.sender
+				+req.body.receiver
+				+req.body.message
+				+req.body.lat
+				+req.body.lon); //get the data to fill in the information here from the sender...
 });
 
 app.listen(process.env.PORT || 3000)
