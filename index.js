@@ -46,8 +46,8 @@ id = setInterval(function(){
 		} else {
 			//console.log(resp); //it's a pain to look through the whole log
 			//console.log("WE ARE IN THE ELSE: ")  //Harsha Debugging
-			console.log(resp/*['body']['reference']*/); //Harsha Debugging
-			currentRefID = resp/*['body']['reference']*/;
+			console.log(resp['body']['reference']); //Harsha Debugging
+			currentRefID = resp['body']['reference'];
 		}
 	})
 }, updateTimer)
@@ -64,7 +64,7 @@ app.post('/', function (req, res) {
 				req.body.lat,
 				req.body.lon
 				);
-	res.send('' +req.body.sender
+	res.send('hi there! ' +req.body.sender
 				+req.body.receiver
 				+req.body.message
 				+req.body.lat
