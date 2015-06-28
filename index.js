@@ -43,12 +43,15 @@ id = setInterval(function(){
 				console.log(err);
 			} else {
 				jsonMessages[0]["sentiment"] = resp['body']['aggregate']['score'];
-				console.log("HELLO LOOK AT ME: " + resp['body']['aggregate']['score']);
+				//console.log("HELLO LOOK AT ME: " + resp['body']['aggregate']['score']);
 			}
 		});
 	}
+	console.log("HERE ARE THE CURRENT MESSAGES: " + messages)
 
 	messages = JSON.stringify(jsonMessages);
+
+	console.log("HERE ARE THE UPDATED MESSAGES: " + messages)
 	currentString = "Updated Sentiment!"
 	var path = './messages.json'
 	fs.writeFile(path, messages, function(err) {
