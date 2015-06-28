@@ -29,7 +29,7 @@ updateTimer = 1000
 
 app.get('/', function(req,res){
 	console.log('hit')
-	res.send('refid: ' + currentRefID)
+	res.send('refid: ' + process.env.idolOnDemandApiKey)
 })
 
 app.listen(3000)
