@@ -49,6 +49,8 @@ id = setInterval(function(){
 		});
 	}
 
+	messages = JSON.stringify(jsonMessages)
+
 	var path = './messages.json'
 	fs.writeFile(path, messages, function(err) {
 	    if(err) {
