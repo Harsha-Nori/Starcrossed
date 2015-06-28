@@ -11,7 +11,7 @@ var fs = require('fs')
 var parser = require('body/json')
 // client = new iod.IODClient('http://api.idolondemand.com', process.env.idolOnDemandApiKey)
 
-currentRefID = ''
+currentRefID = '-1'
 updateTimer = 60000
 // messagesJSON =  [{sender: 'global', message: 'Hello, World!', latitude: '', longitude: ''}];
 //app.use(express.json());
@@ -43,8 +43,8 @@ id = setInterval(function(){
 		} else {
 			//console.log(resp); //it's a pain to look through the whole log
 			//console.log("WE ARE IN THE ELSE: ")  //Harsha Debugging
-			console.log(resp['body']['reference']); //Harsha Debugging
-			currentRefID = resp['body']['reference'];
+			console.log(resp/*['body']['reference']*/); //Harsha Debugging
+			currentRefID = resp/*['body']['reference']*/;
 		}
 	})
 }, updateTimer)
