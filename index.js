@@ -113,8 +113,11 @@ app.post('/', function (req, res) {
 				+req.body.message + ' '
 				+req.body.lat + ' '
 				+req.body.lon,
-				); //get the data to fill in the information here from the sender...
-});
+				0		//get the data to fill in the information here from the sender...
+				);
+	}
+)
+
 
 app.post('/sentiment', function (req, res) {  //return a request for a specific sentiment
 	var dataMap = {
@@ -130,6 +133,9 @@ app.post('/sentiment', function (req, res) {  //return a request for a specific 
 			var sentiment = resp['body']['aggregate']['score'];
 		}
 	res.send(sentiment); //send back sentiment information from the isolated text message
-}
+	}
+	)
+	}
+)
 
 app.listen(process.env.PORT || 5000)
