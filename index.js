@@ -32,7 +32,8 @@ id = setInterval(function(){
 		if (err) {
 			console.log(err);
 		} else {
-			console.log(resp);
+			//console.log(resp);
+			console.log(resp['body']['reference']);
 			currentRefID = resp;
 		}
 	})
