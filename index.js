@@ -12,7 +12,6 @@ var bodyParser = require('body-parser')
 
 currentRefID = '-1'
 updateTimer = 30000
-// messagesJSON =  [{sender: 'global', message: 'Hello, World!', latitude: '', longitude: ''}];
 
 // parse application/x-www-form-urlencoded 
 app.use(bodyParser.urlencoded({ extended: false }))
