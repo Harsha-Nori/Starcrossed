@@ -43,7 +43,9 @@ id = setInterval(function(){
 				console.log(err);
 			} else {
 				jsonMessages[0]["sentiment"] = resp['body']['aggregate']['score'];
-				console.log("HELLO LOOK AT ME: " + resp['body']['aggregate']['score']);
+				console.log("HELLO LOOK AT ME: " + resp['body']['aggregate']['score'];
+
+				);
 			}
 		});
 	}
@@ -80,7 +82,7 @@ id = setInterval(function(){
 
 app.get('/', function(req, res){
 	console.log('get hit')
-	res.send(currentString + '    ' + "\n" + "messages: " + messages)
+	res.send('ref id: ' + currentRefID + '   ' currentString + '    ' + "\n" + "messages: " + messages)
 	//res.send(messages)  //sending whole message from here instead of a reference for mobile app :)
 })
 
