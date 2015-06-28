@@ -11,7 +11,7 @@ var bodyParser = require('body-parser')
 // client = new iod.IODClient('http://api.idolondemand.com', process.env.idolOnDemandApiKey)
 
 currentRefID = '-1'
-updateTimer = 60000
+updateTimer = 30000
 // messagesJSON =  [{sender: 'global', message: 'Hello, World!', latitude: '', longitude: ''}];
 
 // parse application/x-www-form-urlencoded 
@@ -38,7 +38,7 @@ id = setInterval(function(){
 		// 	text: "Today is an awesome and super happy fun day!"
 		// 	//text: jsonMessages[i]["message"]
 		// }
-		needle.post('http://api.idolondemand.com/1/api/sync/storeobject/v1?apikey=4a0d6484-82ce-4f42-a5fc-d1f03c516edf', 'text="today was an awesome day!"', function(err, resp, body) {
+		needle.post('http://api.idolondemand.com/1/api/sync/storeobject/v1?apikey=4a0d6484-82ce-4f42-a5fc-d1f03c516edf&text=today+was+an+awesome+day!', function(err, resp, body) {
 			if (err) {
 				console.log(err);
 			} else {
