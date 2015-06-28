@@ -42,7 +42,8 @@ id = setInterval(function(){
 				console.log(err);
 			} else {
 				if(resp) {
-					jsonMessages[i]["sentiment"] = resp['aggregate']['score'];
+					//jsonMessages[i]["sentiment"] = resp['aggregate']['score'];
+					console.log(resp)
 				}
 			}
 		});
