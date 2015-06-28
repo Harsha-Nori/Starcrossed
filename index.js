@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json 
 app.use(bodyParser.json())
 
-var messages = '[ {"sender": "s", "receiver": "r", "message": "hello", "lat": 0, "lon": 0, "sentiment": 0} ]';
+var messages = '[ {"sender": "s", "receiver": "r", "message": "today was an very fun happy day", "lat": 0, "lon": 0, "sentiment": 0} ]';
 
 function addMessage(sender, receiver, message, lat, lon, sentiment){
 	var newMessages = messages.split(']');
