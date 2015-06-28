@@ -35,14 +35,14 @@ id = setInterval(function(){
 		var datatemp = {
 			apikey:  process.env.idolOnDemandApiKey,
 			//text: "Today is an awesome and super happy fun day!" 
-			text: jsonMessages[i]["message"]
+			text: jsonMessages[0]["message"]
 		}
 		needle.post('http://api.idolondemand.com/1/api/sync/analyzesentiment/v1', datatemp, function(err, resp, body) {
 			if (err) {
 				console.log(err);
 			} else {
 				if(resp) {
-					jsonMessages[i]["sentiment"] = resp['body']['aggregate']['score'];
+					jsonMessages[0]["sentiment"] = resp['body']['aggregate']['score'];
 					console.log(resp)
 				}
 			}
