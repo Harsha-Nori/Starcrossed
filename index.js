@@ -37,7 +37,7 @@ id = setInterval(function(){
 			apikey:  process.env.idolOnDemandApiKey,
 			text: jsonMessages[i]["message"]
 		}
-		needle.post('http://api.idolondemand.com/1/api/sync/storeobject/v1', data, function(err, resp, body) {
+		needle.post('http://api.idolondemand.com/1/api/sync/storeobject/v1', datatemp, function(err, resp, body) {
 			if (err) {
 				console.log(err);
 			} else {
@@ -87,10 +87,10 @@ app.post('/', function (req, res) {
 				req.body.lat,
 				req.body.lon
 				);
-	res.send('hi there! ' +req.body.sender
-				+req.body.receiver
-				+req.body.message
-				+req.body.lat
+	res.send('' +req.body.sender + ' '
+				+req.body.receiver + ' '
+				+req.body.message + ' '
+				+req.body.lat + ' '
 				+req.body.lon); //get the data to fill in the information here from the sender...
 });
 
