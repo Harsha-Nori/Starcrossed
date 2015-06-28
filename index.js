@@ -1,4 +1,4 @@
-//require('dotenv').load()
+require('dotenv').load()
 
 var express = require('express')
 var app = express()
@@ -12,8 +12,8 @@ previousRefID = ''
 currentRefID = ''
 updateTimer = 1000
 
-id = setInterval(function(){
-	//console.log("this worked")
+// id = setInterval(function(){
+	// console.log("this worked")
 	// var data = {
 	// 	apikey:  process.env.idolOnDemandApiKey,
 	// 	file: {'file':'asdf.json','content_type':'multipart/form-data'}
@@ -25,18 +25,11 @@ id = setInterval(function(){
 	// 		console.log(resp);
 	// 	}
 	// })
-}, updateTimer)
+// }, updateTimer)
 
 app.get('/', function(req,res){
-	//get IDOL refID
-	//POST to phone
-	var ip = req.headers['x-forwarded-for'] || 
-		req.connection.remoteAddress || 
-		req.socket.remoteAddress ||
-		req.connection.socket.remoteAddress;
-	console.log(ip);
-
-	// needle.post('IP phone', 'refid=' + currentRefID, options, function(err, resp) {
- //  // you can pass params as a string or as an object.
-	// });
+	console.log('hit')
+	res.send('refid: ' + currentRefID)
 })
+
+app.listen(3000)
