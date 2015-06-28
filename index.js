@@ -32,4 +32,4 @@ app.get('/', function(req,res){
 	res.send('refid: ' + process.env.idolOnDemandApiKey)
 })
 
-//app.listen(3000)
+app.listen(process.env.PORT)
