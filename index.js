@@ -10,7 +10,7 @@ var fs = require('fs')
 var bodyParser = require('body-parser')
 // client = new iod.IODClient('http://api.idolondemand.com', process.env.idolOnDemandApiKey)
 
-currentString = 'Updating...'
+currentString = 'Updating...' //hi
 currentRefID = '-1'
 updateTimer = 30000
 
