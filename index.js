@@ -23,7 +23,7 @@ app.use(bodyParser.json())
 var messages = [];
 
 function addMessage(sender, receiver, message, lat, lon){
-	var m = 'a'//{sender, receiver, message, lat, lon}
+	var m = {sender, receiver, message, lat, lon}
 	messages.push(m)
 }
 
